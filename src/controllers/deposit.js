@@ -1,18 +1,15 @@
 const {
     createSign,
     createHmac,
-} = require('node:crypto');
-require('dotenv').config();
+  } = require('node:crypto');
 const axios = require("axios");
 
 // const endpoint = "https://api.kucoin.com/api/v1/accounts";
-const depositEndpoint = "https://api.kucoin.com/api/v2/deposit-addresses?currency=BTC"
-const withdrawEndpoint = "https://api.kucoin.com/api/v1/withdrawals"
-
-const key = process.env.API_KEY; //Get Kucoin API key from environment file
-const secret = process.env.API_SECRET; //Get Kucoin API secret from environment file
-const passphrase = process.env.API_PASSPHRASE; //Get Kucoin API passphrase from environment file
-
+const depositEndpoint ="https://api.kucoin.com/api/v2/deposit-addresses?currency=BTC"
+const withdrawEndpoint ="https://api.kucoin.com/api/v1/withdrawals"
+const key = "62c84ec85f44740001ea34b1";
+const secret = "f2924067-2442-4489-8606-f0b324d487a5";
+const passphrase = "taxwhaleapp";
 const timestamp = Date.now().toString();
 console.log("TIMESTAMP: ", timestamp);
 const prehash_string = `${
@@ -40,19 +37,14 @@ const headers = {
     "KC-API-KEY-VERSION": `${version}`,
 };
 
-const kucoinData = () => {
-    const getKucoinData = async () => {
-        await axios
-            .get(depositEndpoint, {
-                headers: headers,
-            }).then(res => console.log("RESPONSE", res.data)).catch(error => console.log("ERROR", error.message))
-
-    }
-    return getKucoinData()
+const getKucoinData = async () => {
+    await axios
+        .get(depositEndpoint, {
+            headers: headers,
+        }).then(res => console.log("RESPONSE", res.data)).catch(error => console.log("ERROR", error.message))
 }
 
 // const { data } = await axios.get(endpoint, { headers: headers }).catch(e => console.log(e));
 // console.log(data);
 
-
-module.exports = { kucoinData }
+getKucoinData()

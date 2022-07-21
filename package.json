@@ -2,16 +2,17 @@
   "name": "kucoin",
   "version": "1.0.0",
   "description": "Kucoin API plugin",
-  "main": "src/index.js",
+  "main": "src/server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon src/index.js"
+    "start": "nodemon src/server.js"
   },
   "author": "Joel Adie",
   "license": "ISC",
   "dependencies": {
     "axios": "^0.27.2",
     "crypto-js": "^4.1.1",
+    "dotenv": "^16.0.1",
     "express": "^4.18.1",
     "nodemon": "^2.0.19"
   }
